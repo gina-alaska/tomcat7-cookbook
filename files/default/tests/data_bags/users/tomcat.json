@@ -1,0 +1,12 @@
+{
+  "id": "tomcat",
+	"uid": 5523,
+	"gid": 5523,
+	"home": "/home/tomcat",
+	"shell": "/bin/bash",
+	"comment": "tomcat user",
+	"admin": false,
+	"ssh": {
+		"authorized_users": [ ]
+	}
+}	

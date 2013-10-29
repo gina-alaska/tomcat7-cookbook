@@ -1,4 +1,13 @@
-tomcat7-cookbook
-================
+# tomcat7 cookbook
 
-Tomcat7 from source
+# Requirements
+
+# Usage
+
+# Attributes
+
+# Recipes
+
+# Author
+
+Author:: YOUR_NAME (<YOUR_EMAIL>)
