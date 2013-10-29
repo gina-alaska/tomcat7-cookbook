@@ -3,7 +3,8 @@ vagrant testing currently not working...
 I've had to create /etc/chef/solo.rb and /etc/chef/solo.json and then run chef-client manually
 
 [root@tomcat7-berkshelf ~]# cat /etc/chef/solo.rb 
-```file_cache_path    "/var/chef/cache"
+```ruby
+file_cache_path    "/var/chef/cache"
 file_backup_path   "/var/chef/backup"
 cookbook_path ["/tmp/vagrant-chef-1/chef-solo-1/cookbooks"]
 log_level :info
@@ -20,7 +21,8 @@ no_proxy nil
 ```
 
 [root@tomcat7-berkshelf ~]# cat /etc/chef/solo.json 
-```{
+```json
+{
   "users": ["tomcat"],
   "run_list": ["recipe[gina::users]", "recipe[java]", "recipe[tomcat7]", "recipe[minitest-handler::default]"]
 }
