@@ -20,6 +20,12 @@ link "#{node['tomcat7']['target']}/tomcat" do
 link_type :symbolic
 end
 
+directory "apache-tomcat-#{node['tomcat7']['version']}" do
+  owner node['tomcat7']['user']
+  group node['tomcat7']['group']
+  recursive true
+end
+
 template "/etc/init.d/tomcat7" do
   source "init-rh.erb"
   owner "root"
