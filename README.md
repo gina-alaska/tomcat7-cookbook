@@ -2,6 +2,8 @@
 vagrant testing currently not working...
 I've had to create /etc/chef/solo.rb and /etc/chef/solo.json and then run chef-client manually
 
+depends on gina::users cookbook (which may not be public yet)
+
 [root@tomcat7-berkshelf ~]# cat /etc/chef/solo.rb 
 ```ruby
 file_cache_path    "/var/chef/cache"
