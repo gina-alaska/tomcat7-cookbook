@@ -1,4 +1,9 @@
 # tomcat7 cookbook
+*Creates tomcat user
+*Installs JRE
+*Installs Tomcat
+
+###Caveats
 vagrant testing currently not working...
 I've had to create /etc/chef/solo.rb and /etc/chef/solo.json and then run chef-client manually
 
