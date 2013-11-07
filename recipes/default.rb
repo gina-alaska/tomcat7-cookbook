@@ -7,11 +7,21 @@
 # Cookbook Name:: tomcat7
 # Attributes:: default
 
+node.default['users'] = ["tomcat"]
+include_recipe "user::data_bag"
+
+node.default['java']['jdk_version'] = '7'
+node.force_default['java']['jdk_version'] = '7'
+node.override['java']['jdk_version'] = '7'
+node.force_override['java']['jdk_version'] = '7'
+include_recipe "java"
+
 ark "apache-tomcat-#{node['tomcat7']['version']}" do
   url "http://archive.apache.org/dist/tomcat/tomcat-#{node['tomcat7']['base_version']}/v#{node['tomcat7']['version']}/bin/apache-tomcat-#{node['tomcat7']['version']}.tar.gz"
   checksum = node['tomcat7']['checksum']
   path node['tomcat7']['target']
   owner node['tomcat7']['user']
+  group node['tomcat7']['group']
   action :put
 end
 
@@ -41,7 +51,5 @@ template "#{node['tomcat7']['target']}/tomcat/conf/server.xml" do
 end
 
 service "tomcat7" do
-  service_name "tomcat7"
-  action :enable 
-  action :start
+  action [:enable, :start]
 end

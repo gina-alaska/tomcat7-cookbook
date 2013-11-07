@@ -17,4 +17,12 @@ describe 'tomcat7::default' do
     file('/opt/tomcat/conf/server.xml').must_exist
   end
 
+  it 'make sure that the tomcat7 service is enabled' do
+    service("tomcat7").must_be_enabled
+  end
+
+  it 'make sure that the tomcat7 service is running' do
+    service("tomcat7").must_be_running
+  end
+
 end

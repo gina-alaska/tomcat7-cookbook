@@ -5,7 +5,7 @@
 PATH=/bin:/usr/bin:/sbin:/usr/sbin::<%= node['tomcat7']['home'] %>/bin
 # The first existing directory is used for JAVA_HOME (if JAVA_HOME is not
 # defined in $DEFAULT)
-JDK_DIRS="/usr/lib/jvm/java-6-openjdk /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-1.5.0-sun /usr/lib/j2sdk1.5-sun /usr/lib/j2sdk1.5-ibm"
+JDK_DIRS="/usr/lib/jvm/java-1.7.0 /usr/lib/jvm/java-6-openjdk /usr/lib/jvm/java-6-sun /usr/lib/jvm/java-1.5.0-sun /usr/lib/j2sdk1.5-sun /usr/lib/j2sdk1.5-ibm"
 
 # Look for the right JVM to use
 for jdir in $JDK_DIRS; do
@@ -39,6 +39,13 @@ case $1 in
 	sh $CATALINA_HOME/bin/shutdown.sh  
 	sh $CATALINA_HOME/bin/startup.sh  
     ;;   
+    status)  
+	ps -ef | grep $CATALINA_HOME	
+    ;;   
+    *)
+        echo "Usage: $0 <start|stop|status|restart>"
+	exit 1
+    ;;
 esac      
 exit 0  
 

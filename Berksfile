@@ -4,5 +4,5 @@ group :integration do
 end
 cookbook 'ark'
 cookbook 'java'
-cookbook 'gina', chef_api: :config
+cookbook 'user'
 metadata

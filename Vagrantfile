@@ -74,9 +74,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision :chef_solo do |chef|
     chef.data_bags_path = "files/default/tests/data_bags"
     chef.json = {
-      :defaults => {
-        :users => ["tomcat"]
-      },
+      # this stuff moved to attributes/default.rb
+      # :java => {
+        # :jdk_version => '7'
+      # },
+      # :users => ["tomcat"],
       :mysql => {
         :server_root_password => 'rootpass',
         :server_debian_password => 'debpass',
@@ -86,7 +88,9 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = [
         "recipe[minitest-handler::default]",
-	"recipe[gina::users]",
+	# these are now included in the default recipe for this tomcat7 cookbook
+	# "recipe[java]",
+	# "recipe[user::data_bag]",
         "recipe[tomcat7::default]"
     ]
   end
