@@ -10,10 +10,14 @@
 node.default['users'] = ["tomcat"]
 include_recipe "user::data_bag"
 
-node.default['java']['jdk_version'] = '7'
-node.force_default['java']['jdk_version'] = '7'
-node.override['java']['jdk_version'] = '7'
-node.force_override['java']['jdk_version'] = '7'
+
+case node['platform_family']
+when "rhel", "fedora"
+  node.override['java']['jdk_version'] = '7'
+  node.override['java']['java_home'] = "/usr/lib/jvm/java"
+  node.override['java']['openjdk_packages'] = ["java-1.#{node['java']['jdk_version']}.0-openjdk", "java-1.#{node['java']['jdk_version']}.0-openjdk-devel"]
+end
+
 include_recipe "java"
 
 ark "apache-tomcat-#{node['tomcat7']['version']}" do
